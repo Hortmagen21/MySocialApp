@@ -20,7 +20,8 @@ def update_last_activity_middleware(get_response):
         if is_restricted_internal_url(request.path_info):
             try:
                 request.user = authentication.JWTAuthentication().authenticate(request)[0]
-            except InvalidToken:
+            except Exception:
+                # InvalidToken
                 return response
         if request.user.is_authenticated:
             Profile.objects.filter(user__id=request.user.id) \
