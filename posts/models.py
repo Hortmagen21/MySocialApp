@@ -13,3 +13,6 @@ class Like(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     liked_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('author', 'post',)
