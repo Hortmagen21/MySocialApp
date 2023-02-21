@@ -65,7 +65,7 @@ class LikeList(generics.ListAPIView):
     filterset_class = LikeFilter
 
     def get_queryset(self):
-        return Like.objects.extra(select={'date': "date(posts_like.liked_on)"}).values("date") \
+        return Like.objects.filter(author=self.request.user).extra(select={'date': "date(posts_like.liked_on)"}).values("date") \
             .annotate(likes=Count('pk'))
 
 
