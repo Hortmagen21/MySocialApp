@@ -56,7 +56,8 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 class UserInfoSerializer(serializers.ModelSerializer):
     user_last_login = serializers.DateTimeField(source='user.last_login', read_only=True)
+    user = serializers.ReadOnlyField(source='user.username')
 
     class Meta:
         model = Profile
-        fields = ('last_activity', 'user_last_login')
+        fields = ('last_activity', 'user_last_login', 'user')

@@ -23,3 +23,6 @@ class UserInfoView(generics.ListAPIView):
     queryset = Profile.objects.all()
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserInfoSerializer
+
+    def get_queryset(self):
+        return Profile.objects.filter(user=self.request.user)
