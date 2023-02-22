@@ -147,5 +147,54 @@ Params: **None**
 Response: **None**
 
 
+# Bot activation
+
+After you started a server you could use bot
+to check API endpoints and create a lot of data.
+
+### Bot default config start
+
+```shell
+python data_bot.py
+```
+
+### Additional Configuration
+Configuration file is specified inside .env file
+By default, bot works with local host: http://127.0.0.1:8000
+
+A name of host param is **HOST_NAME** and you are free to change it for your needs
+
+Also, you could specify such params as:
+
+**NUMBER_OF_USERS** - how many users bot would create.
+
+Default: 1;
+
+**MAX_POSTS_PER_USERS** - the limit for amount of posts that user could create.
+
+Default: 2;
+
+**MAX_LIKES_PER_USER** - the limit for amount of likes that user could create.
+
+Default: 4;
+
+**PASSWORD_LEN** - the length of password for users register.
+
+Default: 10;
 
 
+**EMAIL_LENGTH** - the length of email core for users register.
+
+Default: 8;
+
+**FIRST_NAME_LENGTH** - the length of first_name for users register.
+
+Default: 6;
+
+**LAST_NAME_LENGTH** - the length of last_name for users register.
+
+Default: 6;
+
+**CONTENT_LENGTH** - the length of content for posts creation .
+
+Default: 10;
