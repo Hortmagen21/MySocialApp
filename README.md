@@ -131,8 +131,9 @@ Response: **content**, **author**
 Example:
 ```json
 {
+    "id": 8,
     "content": "Skipped content of prev post...",
-    "author": "max4"
+    "author": "max"
 }
 ```
 
