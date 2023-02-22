@@ -92,18 +92,12 @@ class AutoUser:
 
 
 if __name__ == "__main__":
-    # if users can't make such amount of likes we force_decrease a number of MAX_LIKES
-    if MAX_LIKES_PER_USER > NUMBER_OF_USERS * MAX_POSTS_PER_USERS:
-        MAX_LIKES_PER_USER = NUMBER_OF_USERS * MAX_POSTS_PER_USERS
-        print(f"Sorry but with such amount of users and posts i could make only {MAX_LIKES_PER_USER} likes,"
-              f"so max likes was edited to this value")
 
     print(f"Started creation of {NUMBER_OF_USERS} users, max posts per user is {MAX_POSTS_PER_USERS},"
           f" max likes per user is {MAX_LIKES_PER_USER}")
-
     users_created = []
     posts_created = []
-
+    posts_count = 0
     # process of users and posts creation
     while len(users_created) < NUMBER_OF_USERS:
         new_user = AutoUser()
@@ -115,10 +109,17 @@ if __name__ == "__main__":
             new_user.login()
             # process of user create_random_posts
             posts_num = random.randint(0, MAX_POSTS_PER_USERS)
+            posts_count += posts_num
             print(f"For {new_user} will be created {posts_num} posts")
             for _ in range(posts_num):
                 post_id = int(new_user.add_post(content=string_generator(length=CONTENT_LENGTH)))
                 posts_created.append(post_id)
+
+    # if users can't make such amount of likes we force_decrease a number of MAX_LIKES
+    if MAX_LIKES_PER_USER > posts_count:
+        MAX_LIKES_PER_USER = posts_count
+        print(f"Sorry but with such amount of users and posts I could make only {MAX_LIKES_PER_USER} likes,"
+              f"so max likes was edited to this value")
 
     print('-' * 100)
     # process of liking posts
