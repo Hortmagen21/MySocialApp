@@ -126,7 +126,7 @@ JWT: **required**
 
 Params: **content:str**
 
-Response: **content**, **author**
+Response: **id**, **content**, **author**
 
 Example:
 ```json
